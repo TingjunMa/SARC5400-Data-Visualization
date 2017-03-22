@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Land Guzzlers</title>
+    <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        
+        var data;
+        
+        function getData() {
+            d3.json("land_guzzlers.json", function(d) {
+                data = d;
+                draw();
+            });
+        }
+        
+        function draw() {
+            var target = d3.select("#land");
+            var baseline = 900;
+            var wrap = 1050;
+            var spacing = 70;
+            var letterLen = 3;
+            var fontSize = 26;
+            var fontSize2 = 17;
+            var strokeWidth = 3;
+            var color = ["#A5620B","#C29657","#CC1F5E","#AB1749","#F7991D","#231F20"]
+            
+            var g = target.selectAll("g")
+                            .data(data);
+            
+            var group = g.enter().append("g");
+            group.append("rect")
+                    .attr("x", 0)
+                    .attr("y", function(d) {
+                        return wrap-Math.sqrt(d["footprint"]) * baseline;
+                        })
+                    .attr("width", function(d) {
+                        return Math.sqrt(d["footprint"]) * baseline;
+                        })
+                    .attr("height", function(d) {
+                        return Math.sqrt(d["footprint"]) * baseline;
+                        })
+                    .attr("stroke", "white")
+                    .attr("stroke-width", strokeWidth)
+                    .attr("style", function(d,i) {
+                        return "fill:"+color[i];
+                        });
+            
+            group.append("polyline")
+                    .attr("points", function(d) {
+                        if (d["title"]==="TOYOTA LAND CRUISER") {
+                            return "280,505 550,505 550 560";
+                        }
+                        else if (d["title"]==="MEDIUM SIZED DOG") {
+                            return "560,255 800,255 800,330";
+                        }
+                        else {
+                            return null;
+                        }
+                        })  
+                    .attr("style", "fill: none; stroke-width:1; stroke: white");
+            
+            group.append("text")
+                    .text(function(d) {return d["title"];})
+                    .attr("font-size", function(d,i) {
+                        return fontSize - i;
+                        })
+                    .attr("font-weight", "lighter")
+                    .attr("style", function() {
+                        return "fill: #FFFFFF; text-anchor:end";
+                        })
+                    .attr("x", function(d) {
+                        if (d["title"]==="HAMSTER") {
+                            return Math.sqrt(d["footprint"]) * baseline + d["title"].length * 18 - 25;
+                        }
+                        else {
+                            return Math.sqrt(d["footprint"]) * baseline - 5;
+                        }})
+                    .attr("y", function(d) {
+                        return wrap-Math.sqrt(d["footprint"]) * baseline+fontSize;
+                        });
+            
+            group.append("text")
+                    .text(function(d) {return d["subtitle"]===0 ? "":d["subtitle"];})
+                    .attr("font-size", fontSize2)
+                    .attr("font-weight", "lighter")
+                    .attr("style", function() {
+                        return "fill: #FFFFFF; text-anchor:end";
+                        })
+                    .attr("x", function(d) {
+                        if (d["title"]==="HAMSTER") {
+                            return Math.sqrt(d["footprint"]) * baseline + d["title"].length * 15;
+                        }
+                        else {
+                            return Math.sqrt(d["footprint"]) * baseline - 30;
+                        }})
+                    .attr("y", function(d) {
+                        return wrap-Math.sqrt(d["footprint"]) * baseline+fontSize*2;
+                    });
+            
+            group.append("text")
+                    .text(function(d) {return d["subtitle2"]===0 ? "":d["subtitle2"];})
+                    .attr("font-size", fontSize2)
+                    .attr("font-weight", "lighter")
+                    .attr("style", function() {
+                        return "fill: #FFFFFF; text-anchor:end";
+                        })
+                    .attr("x", function(d) {
+                        if (d["title"]==="HAMSTER") {
+                            return Math.sqrt(d["footprint"]) * baseline + d["title"].length * 15;
+                        }
+                        else {
+                            return Math.sqrt(d["footprint"]) * baseline - 30;
+                        }})
+                    .attr("y", function(d) {
+                        return wrap-Math.sqrt(d["footprint"]) * baseline+fontSize*3;
+                    });
+            
+            group.append("text")
+                    .text(function(d) {return d["subtitle3"]===0 ? "":d["subtitle3"];})
+                    .attr("font-size", fontSize2)
+                    .attr("font-weight", "lighter")
+                    .attr("style", function() {
+                        return "fill: #FFFFFF; text-anchor:end";
+                        })
+                    .attr("x", function(d) {
+                        if (d["title"]==="HAMSTER") {
+                            return Math.sqrt(d["footprint"]) * baseline + d["title"].length * 15;
+                        }
+                        else {
+                            return Math.sqrt(d["footprint"]) * baseline - 30;
+                        }})
+                    .attr("y", function(d) {
+                        return wrap-Math.sqrt(d["footprint"]) * baseline+fontSize*4;
+                    });
+            
+            group.append("text")
+                    .text(function(d) {
+                        if (d["title"]==="VOLKSWAGEN GOLF") {
+                            return null;
+                        }
+                        else {
+                            return "Eco-footprint: " + String(d["footprint"]) + "hectares";
+                        }})
+                    .attr("font-size", fontSize2)
+                    .attr("font-weight", "lighter")
+                    .attr("style", function(d) {
+                            if (d["title"]==="HAMSTER") {
+                                return "fill: #FFFFFF; writing-mode: lr;"
+                            }
+                            else {
+                                return "fill: #FFFFFF; writing-mode: tb;";
+                            }
+                        })
+                    .attr("x", function(d) {
+                        if (d["title"]==="HAMSTER") {
+                            return Math.sqrt(d["footprint"]) * baseline + 5;
+                        }
+                        else {
+                            return Math.sqrt(d["footprint"]) * baseline - 10;
+                        }})
+                    .attr("y", function(d) {
+                        if (d["title"]==="HAMSTER") {
+                            return wrap-Math.sqrt(d["footprint"]) * baseline+fontSize*2;
+                        }
+                        else {
+                            return wrap-Math.sqrt(d["footprint"]) * baseline+fontSize + 10;
+                        }});
+        }
+    </script>
+</head>
+<body onload="getData()">
+    <svg id="land" width="1000" height="1050">
+        <text x="0" y="50" font-size="35">Land guzzlers</text>
+        <text x="0" y="80" font-size="20">The ecological footprints of our pets can make SUVs look positively eco-friendly</text>
+    </svg>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+[
+  {
+    "title": "LARGE DOG",
+    "footprint": 1.1,
+    "subtitle": 0,
+    "subtitle2": 0,
+    "subtitle3": 0,
+    "color":"#A5620B"
+  },
+  {
+    "title": "MEDIUM SIZED DOG",
+    "footprint": 0.84,
+    "subtitle": "CONSUMPTION PER YEAR",
+    "subtitle2": "164kg of meat, 95kg or cereals",
+    "subtitle3": "43.3m2 of land per 1kg of chicken (more for beef and lamb), 13.4m2 of land per 1kg of cereals",
+    "color":"#C29657"
+  },
+  {
+    "title": "TOYOTA LAND CRUISER",
+    "footprint": 0.41,
+    "subtitle": "10,000km DRIVEN PER YEAR",
+    "subtitle2": "55.1 gigajoules (includes energy required to fuel and construct)",
+    "subtitle3": 0,
+    "color":"#CC1F5E"
+  },
+  {
+    "title": "VOLKSWAGEN GOLF",
+    "footprint": 0.18,
+    "subtitle": 0,
+    "subtitle2": 0,
+    "subtitle3": 0,
+    "color":"#AB1749"
+  },
+  {
+    "title": "CAT",
+    "footprint": 0.15,
+    "subtitle": 0,
+    "subtitle2": 0,
+    "subtitle3": 0,
+    "color":"#F7991D"
+  },
+  {
+    "title": "HAMSTER",
+    "footprint": 0.014,
+    "subtitle": 0,
+    "subtitle2": 0,
+    "subtitle3": 0,
+    "color":"#231F20"
+  }
+]
